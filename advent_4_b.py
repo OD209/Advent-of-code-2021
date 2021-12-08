@@ -14,7 +14,6 @@ def create_column(lst):
     column = []
     for i in range(len(lst)):
         for j in range(len(lst)):
-            # print(lst[j][i])
             column.append(lst[j][i])
 
         nlst.append(column)
@@ -37,10 +36,8 @@ def update_lst(lst, num):
 
 
 def run(nums, tables):
-    # print(tables1)
     for number in range(len(nums)):
         for i in range(len(tables)):
-            # print(tables[i])
             for j in range(len(tables[i])):
                 og_table = tables[i][j]
                 tables[i][j] = update_lst(tables[i][j], nums[number])
@@ -79,8 +76,7 @@ def find_last(nums, tables, column_tables):
 
     for number in range(len(nums)):
         for i in range(len(tables)):
-
-            #print("winnnnerrrrssss", winners)
+            
             if tables[i] not in winners and column_tables[i] not in winners:
                 for j in range(len(tables[i])):
                     # all rows / columns
@@ -93,13 +89,11 @@ def find_last(nums, tables, column_tables):
                         column_tables[i][j], nums[number])
 
                     if check_bingo(tables[i][j]):
-                        print("bols", tables[i], i)
                         winners.append(tables[i])
                         if len(winners) == len(tables):
                             return(winners[len(winners)-1], nums[number])
                         break
                     elif check_bingo(column_tables[i][j]):
-                        print("cock", column_tables[i], i)
                         winners.append(column_tables[i])
                         if len(winners) == len(tables):
                             return(winners[len(winners)-1], nums[number])
@@ -107,8 +101,6 @@ def find_last(nums, tables, column_tables):
 
                     tables[i][j] = initial_row
                     column_tables[i][j] = initial_column
-
-    # return(winners[len(winners)-1])
 
 
 nums = data[0].split(",")
@@ -129,7 +121,6 @@ for i in range(len(tables)):
     column_tables.append(create_column(tables[i]))
 
 x = find_last(nums, tables, column_tables)
-print(x)
 
 count = 0
 for i in range(len(x[0])):
